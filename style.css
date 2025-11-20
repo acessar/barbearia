@@ -1,0 +1,662 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --preto: #1a1a1a;
+    --branco: #f5f5f5;
+    --dourado: #d4af37;
+    --preto-suave: #2d2d2d;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--preto);
+    color: var(--branco);
+    line-height: 1.6;
+}
+
+/* ===== HEADER ===== */
+header {
+    background-color: var(--preto-suave);
+    border-bottom: 2px solid var(--dourado);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--dourado);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.icon-tesoura {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.card-servico svg {
+    display: block;
+}
+
+.agendamento-item svg {
+    vertical-align: middle;
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+nav a {
+    color: var(--branco);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    cursor: pointer;
+}
+
+nav a:hover {
+    color: var(--dourado);
+}
+
+.btn-login {
+    background-color: var(--dourado);
+    color: var(--preto);
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+.btn-login:hover {
+    transform: scale(1.05);
+}
+
+/* ===== HERO ===== */
+.hero {
+    background: linear-gradient(135deg, var(--preto) 0%, var(--preto-suave) 100%);
+    padding: 6rem 2rem;
+    text-align: center;
+    border-bottom: 3px solid var(--dourado);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: var(--dourado);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    color: var(--branco);
+    margin-bottom: 2rem;
+}
+
+.btn-agendar {
+    background-color: var(--dourado);
+    color: var(--preto);
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-agendar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--dourado);
+}
+
+/* ===== SERVIÇOS ===== */
+.servicos {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.servicos h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--dourado);
+    margin-bottom: 3rem;
+    border-bottom: 2px solid var(--dourado);
+    padding-bottom: 1rem;
+}
+
+.grid-servicos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card-servico {
+    background-color: var(--preto-suave);
+    border: 2px solid var(--dourado);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-servico:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+.card-servico h3 {
+    color: var(--dourado);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.card-servico p {
+    color: var(--branco);
+    margin-bottom: 1rem;
+}
+
+.preco {
+    color: var(--dourado);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* ===== MODAL AGENDAMENTO ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: var(--preto-suave);
+    margin: 5% auto;
+    padding: 2rem;
+    border: 2px solid var(--dourado);
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.close {
+    color: var(--dourado);
+    float: right;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: var(--branco);
+}
+
+.modal h2 {
+    color: var(--dourado);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--dourado);
+    padding-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: var(--dourado);
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--preto);
+    color: var(--branco);
+    border: 1px solid var(--dourado);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    box-shadow: 0 0 10px var(--dourado);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.btn-enviar {
+    background-color: var(--dourado);
+    color: var(--preto);
+    padding: 1rem;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.btn-enviar:hover {
+    transform: scale(1.02);
+}
+
+/* ===== FORMULÁRIO PROGRESSIVO AGENDAMENTO ===== */
+.step-agendamento {
+    animation: fadeIn 0.3s ease-in;
+}
+
+.step-agendamento.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.opcoes-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.opcao-item {
+    background-color: var(--preto);
+    border: 2px solid var(--dourado);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.opcao-item:hover {
+    background-color: var(--preto-suave);
+    transform: translateX(5px);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.opcao-item.selecionada {
+    background-color: var(--dourado);
+    color: var(--preto);
+}
+
+.opcao-item.selecionada h4,
+.opcao-item.selecionada p {
+    color: var(--preto);
+}
+
+.opcao-item h4 {
+    color: var(--dourado);
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.opcao-item p {
+    color: var(--branco);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.opcoes-horarios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 0.75rem;
+    padding: 1rem;
+    background-color: var(--preto);
+    border-radius: 8px;
+}
+
+.horario-item {
+    background-color: var(--preto-suave);
+    border: 2px solid var(--dourado);
+    border-radius: 6px;
+    padding: 0.75rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+    color: var(--dourado);
+    font-size: 0.85rem;
+}
+
+.horario-item:hover:not(.indisponivel) {
+    background-color: var(--preto);
+    transform: scale(1.05);
+}
+
+.horario-item.selecionado {
+    background-color: var(--dourado);
+    color: var(--preto);
+}
+
+.horario-item.indisponivel {
+    opacity: 0.4;
+    cursor: not-allowed;
+    border-color: #555;
+}
+
+.horario-item.indisponivel:hover {
+    background-color: var(--preto-suave);
+    transform: scale(1);
+}
+
+#data-agendamento {
+    font-size: 1rem;
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--preto);
+    color: var(--branco);
+    border: 1px solid var(--dourado);
+    border-radius: 5px;
+}
+
+#data-agendamento:focus {
+    outline: none;
+    box-shadow: 0 0 10px var(--dourado);
+}
+
+#resumo-agendamento {
+    background-color: var(--preto);
+    padding: 1.5rem;
+    border-left: 4px solid var(--dourado);
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+}
+
+#resumo-agendamento p {
+    margin: 0.75rem 0;
+    color: var(--branco);
+}
+
+#resumo-agendamento strong {
+    color: var(--dourado);
+}
+
+/* ===== CALENDÁRIO VISUAL ===== */
+.btn-nav-cal {
+    background-color: var(--dourado);
+    color: var(--preto);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.btn-nav-cal:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px var(--dourado);
+}
+
+.dia-semana {
+    background-color: var(--preto-suave);
+    color: var(--dourado);
+    padding: 0.5rem;
+    font-weight: bold;
+    border-bottom: 1px solid var(--dourado);
+    font-size: 0.8rem;
+}
+
+.dia-calendario {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #555;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+    color: var(--branco);
+}
+
+.dia-calendario:hover:not(.dia-desabilitado) {
+    background-color: var(--preto-suave);
+    border-color: var(--dourado);
+}
+
+.dia-calendario.dia-outro-mes {
+    color: #555;
+    cursor: default;
+}
+
+.dia-calendario.dia-outro-mes:hover {
+    background-color: transparent;
+    border-color: #555;
+}
+
+.dia-calendario.dia-selecionado {
+    background-color: var(--dourado);
+    color: var(--preto);
+    border-color: var(--dourado);
+    font-weight: bold;
+}
+
+.dia-calendario.dia-desabilitado {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.dia-calendario.dia-desabilitado:hover {
+    background-color: transparent;
+    border-color: #555;
+}
+
+.modal-login {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-login-content {
+    background-color: var(--preto-suave);
+    margin: 5% auto;
+    padding: 2rem;
+    border: 2px solid var(--dourado);
+    border-radius: 8px;
+    width: 90%;
+    max-width: 450px;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--dourado);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 1rem;
+    background: none;
+    color: var(--branco);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-btn.active {
+    color: var(--dourado);
+    border-bottom: 3px solid var(--dourado);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ===== PAINEL DO CLIENTE ===== */
+.cliente-painel {
+    display: none;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.painel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--dourado);
+    padding-bottom: 1rem;
+}
+
+.painel-header h2 {
+    color: var(--dourado);
+    font-size: 2rem;
+}
+
+.btn-logout {
+    background-color: var(--dourado);
+    color: var(--preto);
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.painel-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.painel-section {
+    background-color: var(--preto-suave);
+    border: 2px solid var(--dourado);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.painel-section h3 {
+    color: var(--dourado);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--dourado);
+    padding-bottom: 0.5rem;
+}
+
+.agendamento-item {
+    background-color: var(--preto);
+    border-left: 4px solid var(--dourado);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.agendamento-item strong {
+    color: var(--dourado);
+}
+
+.agendamento-item p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+.btn-acao {
+    background-color: var(--dourado);
+    color: var(--preto);
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+    font-size: 0.85rem;
+    transition: transform 0.3s;
+}
+
+.btn-acao:hover {
+    transform: scale(1.05);
+}
+
+.btn-cancelar {
+    background-color: #d32f2f;
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .painel-content {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        gap: 1rem;
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
